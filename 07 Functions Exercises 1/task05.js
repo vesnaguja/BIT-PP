@@ -20,24 +20,29 @@ console.log(result);
 
 ////////////////////////////////////////////
 
-var size = 5;
-var star = '* ';
-var result = '';
+function drawSquare(size) {
 
-for (i = 0; i < size; i++) {
-  result = result + ' ';
-  if (i === 0 || i === size - 1) {
-    for (j = 0; j < size; j++) {
+  var result = '';
+  for (i = 0; i < size; i++) {
+    result = result + ' ';
+    if (i === 0 || i === size - 1) {
+      for (j = 0; j < size; j++) {
+        result = result + '* ';
+      }
+    } else {
+      result = result + '* ';
+
+      for (x = 1; x < size - 1; x++) {
+        result = result + '  ';
+      }
       result = result + '* ';
     }
-  } else {
-    result = result + '* ';
-    
-    for (x = 1; x < size - 1; x++) {
-      result = result + '  ';
-    }
-    result = result + '* ';
+    result = result + '\n';
   }
-  result = result + '\n';
+  return result;
 }
-console.log(result);
+
+
+
+var size = 5;
+console.log(drawSquare(size));
