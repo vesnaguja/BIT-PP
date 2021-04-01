@@ -6,7 +6,7 @@ Note: This is actually an interview question that has been claimed to weed out a
 
 
 for (i = 1; i <= 100; i++) {
-  if (i % 3 === 0 && i % 5 !== 0) {
+  if (i % 3 === 0 && i % 5 !== 0) {  /*i%15 ===0*/
     console.log('Fizz');
   } else if (i % 5 === 0 && i % 3 !== 0) {
     console.log('Buzz')
@@ -15,4 +15,23 @@ for (i = 1; i <= 100; i++) {
   } else {
     console.log(i)
   }
+}
+
+
+//////////////////////////////////////////////////////////////////
+
+
+var result = '';
+
+for (var i = 1; i <= 100; i++) {
+  if (i % 3 === 0 && i % 5 !== 0) {
+    result = 'Fizz';
+  } else if (i % 5 === 0 && i % 3 !== 0) {
+    result = 'Buzz';
+  } else if (i % 3 === 0 && i % 5 === 0) {
+    result = 'FizzBuzz';;
+  } else {
+    result = i;
+  }
+  console.log(result);
 }

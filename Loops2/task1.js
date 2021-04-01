@@ -10,7 +10,7 @@ var e = 3;
 var a = [5, -4.2, 3, 7];
 var result = 'no';
 
-for (i = 0; i < a.length; i++) {
+for (var i = 0; i < a.length; i++) {
 
   if (e === a[i]) {
     result = 'yes';
@@ -25,7 +25,7 @@ console.log(result);
 
 
 var e = 3;
-var a = [5, -4.2, , 7];
+var a = [5, -4.2, 18, 7];
 var result = 'no';
 
 for (i = 0; i < a.length; i++) {

@@ -15,5 +15,25 @@ for (i = 0; i < a.length / 2; i++) {
   }
 }
 console.log(result);
+           
 
 
+
+var a = [2, 4, -2, 7, -2, 4, 2];
+
+var result = 'The array is symmetric.'
+///////drugi nacin//////////////////////////////////////////////////////////////////////////////////////////
+
+
+var a = [2, 4, -2, 7, -2, 4, 2];
+var result = true;
+
+for (var start = 0, end = a.length - 1; start < end; start++, end--) {
+  if (a[start] !== a[end]) {
+    result = false;
+  }
+}
+
+console.log(result);
+
+result ? console.log('The array is symmetric.') : console.log('The array is not symmetric.');;

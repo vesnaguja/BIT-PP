@@ -2,7 +2,9 @@
 
 
 for (var x = 0; x <= 15; x++) {
-  if (x % 2 === 0) {
+  if (x === 0) {
+    console.log('The number ' + x + ' is zero')
+  } else if (x % 2 === 0 && x !== 0) {
     console.log('The number ' + x + ' is even');
   } else {
     console.log('The number ' + x + ' is odd');

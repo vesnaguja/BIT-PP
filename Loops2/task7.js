@@ -5,16 +5,16 @@
 var a = [4, 5, 6, 2];
 var b = [3, 8, 11, 9];
 
-var c = [];
+var ab = [];
 var j = 0;
 
 
-for (i = 0; i < a.length; i++) {
-  c[j] = a[i];
+for (var i = 0; i < a.length; i++) {
+  ab[j] = a[i];
   j++;
   
-  c[j] = b[i];
+  ab[j] = b[i];
   j++;
 }
 
-console.log(c);
+console.log(ab);

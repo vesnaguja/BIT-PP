@@ -7,7 +7,7 @@ var a = [4, 2, 2, -1, 6];
 var minimum = a[0];
 var minimumIndex = 0;
 
-for (i = 1; i < a.length; i++) {
+for (var i = 1; i < a.length; i++) {
   if (a[i] < minimum) {
     minimum = a[i];
     minimumIndex = i;
@@ -15,3 +15,6 @@ for (i = 1; i < a.length; i++) {
 }
 
 console.log(minimum + ', ' + minimumIndex);
+
+
+////koliko broj ima cifara

@@ -26,3 +26,21 @@ function multiChar(array) {
 var nums = [5, 3, 7];
 
 console.log(multiChar(nums));
+
+
+
+//kraci nacin
+
+function multiChar(array) {
+  var result = ''; 
+  for (var i = 0; i < array.length; i++) {
+    for (var j = 0; j < array[i]; j++) {
+      result = result + '* ';
+    }
+    result = result + '\n';
+  }
+  return result;
+}
+
+var array = [5, 3, 7];
+console.log(multiChar(array));
