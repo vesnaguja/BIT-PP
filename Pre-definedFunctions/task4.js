@@ -15,8 +15,8 @@ function numOfInteger(array) {
   return num;
 }
 
-
-
 var a = [NaN, 23.1, 15, false, -22.5, '', 4, 7, null];
 
 console.log(numOfInteger(a));
+
+

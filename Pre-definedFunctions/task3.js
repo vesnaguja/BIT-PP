@@ -19,4 +19,4 @@ function falsyFilter(array) {
 
 console.log(falsyFilter(a));
 
-
+///////////////probaj sa parseInt
