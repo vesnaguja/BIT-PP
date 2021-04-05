@@ -11,7 +11,7 @@ function joinAllNumbers(array) {
   var sum = '';
 
   for (var i = 0; i < array.length; i++) {
-    if (array[i] !== null && array[i] !== undefined && isFinite(array[i]) === true) {
+    if (array[i] !== null && isFinite(array[i])) {
       sum = sum + array[i];
     }
   }

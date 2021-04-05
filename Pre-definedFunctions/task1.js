@@ -22,3 +22,24 @@ var a = ["1", "21", undefined, "42", "1e+3", Infinity];
 
 console.log(ToArrayOfNumbers(a));
 
+
+/////////////////////
+
+function convert(array) {
+  var b = [];
+  var j =0;
+  for (var i = 0; i < a.length; i++) {
+    var converted = parseFloat(array[i]);
+    if (isFinite(converted)) {
+      b[j] = converted;
+      j++;
+    }
+  }
+  return b;
+}
+
+
+var a = ["1", "21", undefined, "42", "1e+3", Infinity];
+
+
+console.log(convert(a));
