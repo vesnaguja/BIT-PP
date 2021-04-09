@@ -23,8 +23,8 @@ console.log(numOfFloat(a));
 function numOfFloat(array) {
   var float = 0;
   for (var i = 0; i < array.length; i++) {
-    var y = parseFloat(array[i], 10); //23.1
-    var x = parseInt (array[i], 10) //23
+    var y = parseFloat(array[i]); //23.1
+    var x = parseInt (array[i]) //23
     if (!isNaN(x) && x != y) {
       float++;
     }

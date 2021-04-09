@@ -25,8 +25,8 @@ console.log(numOfInteger(a));
 function numOfInteger(array) {
   var num = 0;
   for (var i = 0; i < array.length; i++) {
-    var y = parseFloat(array[i], 10); //23.1
-    var x = parseInt(array[i], 10); //23
+    var y = parseFloat(array[i]); //23.1
+    var x = parseInt(array[i]); //23 (bice ==; jer float daje sa zarezom vrednosti)
     if (!isNaN(x) && x == y) {
       num++;
     }
@@ -39,8 +39,5 @@ var a = [NaN, 23.1, 15, false, -22.5, '', 4, 7, null];
 console.log(numOfInteger(a));
 
 
-var b = 23.1;
 
-var c = parseInt(b);
 
-console.log(c);

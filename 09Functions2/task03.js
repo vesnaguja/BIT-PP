@@ -6,7 +6,11 @@
 function stringConcat(string, numOfConcatination) {
   var sum = '';
 
-  if (!!parseInt(numOfConcatination) === false) {
+  // if (!!parseInt(numOfConcatination) === false) {
+  //   return string;
+  // }
+
+  if (numOfConcatination === undefined) {
     return string;
   }
 
@@ -19,6 +23,9 @@ function stringConcat(string, numOfConcatination) {
 }
 
 var a = 'Ha';
-var num = 3;
+var num;
 
-console.log(stringConcat(a, num));
+console.log(stringConcat(a));
+
+
+//console.log(!undefined);

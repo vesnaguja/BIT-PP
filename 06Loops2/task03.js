@@ -17,4 +17,3 @@ for (var i = 1; i < a.length; i++) {
 console.log(minimum + ', ' + minimumIndex);
 
 
-////koliko broj ima cifara
