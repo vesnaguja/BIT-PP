@@ -22,4 +22,14 @@ var arrayFilter = function (inputArray, conditionFunction) {
   return newArray;
 };
 
-console.log(arrayFilter(array, isOdd));
+
+var noviNizBezParnihBrojeva = arrayFilter(array, isOdd);
+
+/*var noviNizBezParnihBrojeva = arrayFilter(array, function (n) {
+  if (n % 2 != 0) {
+    return true;
+  }
+  return false;
+});*/
+
+console.log(noviNizBezParnihBrojeva);

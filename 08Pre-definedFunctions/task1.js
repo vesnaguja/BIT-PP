@@ -27,7 +27,7 @@ console.log(ToArrayOfNumbers(a));
 
 function convert(array) {
   var b = [];
-  var j =0;
+  var j = 0;
   for (var i = 0; i < a.length; i++) {
     var converted = parseFloat(array[i]);
     if (isFinite(converted)) {
