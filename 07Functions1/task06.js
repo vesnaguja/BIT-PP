@@ -14,7 +14,7 @@ function starChart(num) {
 }
 
 
-function multiChar(array) {
+function multiChart(array) {
   var result = '';
   for (var i = 0; i < array.length; i++) {
     result = result + starChart(array[i]) + '\n';
@@ -25,14 +25,14 @@ function multiChar(array) {
 
 var nums = [5, 3, 7];
 
-console.log(multiChar(nums));
+console.log(multiChart(nums));
 
 
 
 //kraci nacin
 
-function multiChar(array) {
-  var result = ''; 
+function multiChart(array) {
+  var result = '';
   for (var i = 0; i < array.length; i++) {
     for (var j = 0; j < array[i]; j++) {
       result = result + '* ';
@@ -43,4 +43,21 @@ function multiChar(array) {
 }
 
 var array = [5, 3, 7];
-console.log(multiChar(array));
+console.log(multiChart(array));
+
+
+// f-ja koja prima neograniceni broj argumenata
+
+function chart() {
+  var result = '';
+  for (var i = 0; i < arguments.length; i++) {
+    for (var j = 0; j < arguments[i]; j++) {
+      result += '*';
+    }
+    result += '\n';
+  }
+  return result;
+}
+
+
+console.log(chart(5, 3, 7, 8));
