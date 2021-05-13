@@ -10,3 +10,9 @@ var myFavoriteMovie = {
   genre: 'Romance',
   IMDbRating: '8.3'
 }
+
+myFavoriteMovie.popularity = 'very popular';
+
+console.log(myFavoriteMovie.actors.leadingFemaleRole);
+
+console.log(myFavoriteMovie);

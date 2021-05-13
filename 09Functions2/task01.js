@@ -3,8 +3,6 @@
 // "My random string" -> true
 // 12 -> false
 
-
-
 function isString(a) {
   if (typeof a === 'string') {
     return true;
@@ -15,17 +13,27 @@ function isString(a) {
 }
 
 var a = "My random string";
-
-
 console.log(isString(a));
 
 
-///////////////////////////////////////////////////////////
+// kraca verzija
 
-function isString(a) {
-  return typeof a === 'string';
+function isString(input) {
+  if(typeof input === 'string') {
+    return true;
+  }
+  return false;  
 }
 
-var a = "My random string";
+var result = isString('My random string');
+console.log(result);
 
-console.log(isString(a));
+// jos kraca verzija
+
+function isString(input) {
+  return typeof input === 'string';
+}
+
+var result = isString("My random string");
+
+console.log(result);

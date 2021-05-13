@@ -17,7 +17,6 @@ function stringConcat(string, numOfConcatination) {
   for (var i = 0; i < numOfConcatination; i++) {
     sum = sum + string;
   }
-
   return sum;
 
 }

@@ -7,3 +7,7 @@ var myFavoriteCoffee = {
   sugar: 'tea spoon',
   milk: 'none'
 };
+
+myFavoriteCoffee.flavour = 'vanila';
+
+console.log(myFavoriteCoffee);

@@ -5,8 +5,8 @@
 // 12 -> false
 // false -> false
 
-function isBlankString(a) {
-  if (a === ' ') {
+function isBlankString(input) {
+  if (input === ' ') {
     return true;
 
   } else {
@@ -14,7 +14,18 @@ function isBlankString(a) {
   }
 }
 
-var a = ' ';
+var result = isBlankString(' ');
+console.log(result);
 
 
-console.log(isBlankString(a));
+// krace
+
+function isBlankString(input) {
+  if (input === ' ') {
+    return true;
+  }
+  return false;
+}
+
+var result = isBlankString(' ');
+console.log(result);
