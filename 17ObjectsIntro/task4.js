@@ -5,11 +5,8 @@
 ○	Add a method that delete a given ingredient from the list of ingredients.  
 */
 
-function createCulinaryRecipe(dish, cuisine, difficulty, ingredients, prepTime, instruction) {
 
-  if (difficulty < 1 || difficulty > 5) {
-    difficulty = 'unknown';
-  }
+function createCulinaryRecipe(dish, cuisine, difficulty, ingredients, prepTime, prepInst) {
 
   var culinaryRecipe = {
     name: dish,
@@ -17,67 +14,46 @@ function createCulinaryRecipe(dish, cuisine, difficulty, ingredients, prepTime, 
     complexity: difficulty,
     listOfIngredients: ingredients,
     preparingTime: prepTime,
-    preparingInstruction: instruction,
+    preparingInstruction: prepInst,
+
     printIngredients: function () {
-      var out = '';
-      for (let i = 0; i < this.listOfIngredients.length; i++) {
-        if (i === this.listOfIngredients.length - 1) {
-          out += this.listOfIngredients[i]
-        } else {
-          out += this.listOfIngredients[i] + '\n';
-        }
+      console.log(culinaryRecipe.listOfIngredients);
+    },
+
+    preparedIn15min: function () {
+      if (culinaryRecipe.preparingTime <= 15) {
+        console.log('Meal can be prepared in 15 minutes.');
+      } else {
+        console.log('Meal cannot be prepared in 15 minutes.');
       }
-      console.log(out);
     },
-    prparedIn15min: function () {
-      if (this.preparingTime <= 15) {
-        return true;
-      }
-      return false;
+
+    changeTypeOfCuisine: function (changeType) {
+      console.log(culinaryRecipe.typeOfCuisine = changeType);
     },
-    setCousine: function (newCuisine) {
-      this.typeOfCuisine = newCuisine;
-    },
-    deleteIngredient: function (ingrediant) {
+
+    deleteIngredient: function (ingredient) {
       var newListOfIngrediants = [];
-
-      for (let i = 0; i < this.listOfIngredients.length; i++) {
-        if (this.listOfIngredients[i] !== ingrediant) {
-          newListOfIngrediants[newListOfIngrediants.length] = this.listOfIngredients[i];
-          //newListOfIngrediants.push(this.listOfIngredients[i])
-        }
+      for (var i = 0; i < culinaryRecipe.listOfIngredients.length; i++) {
+       if (culinaryRecipe.listOfIngredients[i] !== ingredient) {
+        newListOfIngrediants[newListOfIngrediants.length] = culinaryRecipe.listOfIngredients[i];
+       }        
       }
+      culinaryRecipe.listOfIngredients = newListOfIngrediants;
+     }
 
-      this.listOfIngredients = newListOfIngrediants;
-
-      //var ingrediantIndex = this.listOfIngredients.indexOf(ingrediant);
-      //this.listOfIngredients.splice(ingrediantIndex, 1);
-    }
   }
   return culinaryRecipe;
 }
 
+var recipe1 = createCulinaryRecipe('musaka', 'srpska', 3, ['krompir', 'meso', 'luk'], 60, 'meso i luk isprziti, sipati preko krompira i peci u rerni')
 
-var recipe1 = createCulinaryRecipe('Musaka', 'Turkish', 3, ['meat', 'potato', 'onion'], 45, 'Isprziti luk i meso, rasporediti izmedju 2 reda krompira, peci u rerni');
-
-//prints out all the ingredients necessary for the meal preparation
-console.log('Ingredients:');
 recipe1.printIngredients();
 
-//checks if a meal can be prepared in 15 minutes
-if (recipe1.prparedIn15min()) {
-  console.log('Meal can be prepared in 15 minutes.');
-} else {
-  console.log('Meal can not be prepared in 15 minutes.');
-}
+recipe1.preparedIn15min();
 
-//change the type of cuisine to the given value ???
-recipe1.setCousine('Serbian');
-console.log('Type of cousine: ' + recipe1.typeOfCuisine);
+recipe1.changeTypeOfCuisine('Turska');
 
-//delete a given ingredient from the list of ingredients
-recipe1.deleteIngredient('onion');
+recipe1.deleteIngredient('luk');
 
-console.log('Ingredients:');
 recipe1.printIngredients();
-
