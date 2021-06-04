@@ -100,6 +100,7 @@
       var month = this.date.getMonth() + 1;
       var year = this.date.getFullYear();
       result += '\t' + day + '.' + month + '.' + year + ', ' + relationShort + '\n';
+      
       this.listOfPassengers.forEach(function (passenger) {
         result += '\t\t\t' + passenger.getData() + '\n'
       })
