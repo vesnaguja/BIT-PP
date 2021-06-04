@@ -159,7 +159,7 @@
     var flight2 = createFlight('Barcelona - Belgrade', 'Nov 11 2017')
 
     var passenger1 = createPassenger('John', 'Snow', 1, 'b')
-    var passenger2 = createPassenger('Cersei', 'Lannister', 2, 'b')
+    var passenger2 = createPassenger('Cersei', 'Lannister', 101, 'b')
     var passenger3 = createPassenger('Daenerys', 'Targaryen', 14)
     var passenger4 = createPassenger('Tyrion', 'Lannister')
 
