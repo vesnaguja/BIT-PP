@@ -39,6 +39,7 @@
   airport1.addFlight(flight1);
   airport1.addFlight(flight2);
 
+  console.log(airport1.getData());
   airport1.listOfFlights.forEach(function (e) {
     console.log(e.getData());
   })
@@ -55,7 +56,7 @@ function Person(name, surname) {
 }
 
 function Seat(number, category = 'e') {
-  this.number = number || Math.floor(Math.random() * 90 + 10)
+  this.number = number || Math.round(Math.random() * 90 + 10)
 
   if (category.toLowerCase() === 'b' || category.toLowerCase() === 'e') {
     this.category = category.toUpperCase();
@@ -156,5 +157,13 @@ function Airport() {
     if (f instanceof Flight) {
       this.listOfFlights.push(f);
     }
+  }
+
+  this.getData = function() {
+    var totalPassengers = this.listOfFlights.reduce(function (total, flight) {
+      return total += flight.listOfPassengers.length;
+    }, 0);
+
+    return 'Airport: ' + this.name + ', total passengers: ' + totalPassengers;
   }
 }
