@@ -21,7 +21,6 @@
   //var passenger5 = createPassenger('John', 'Snow', 3, 'b');
 
 
-
   flight1.addPassenger(passenger1);
   flight1.addPassenger(passenger2);
 
