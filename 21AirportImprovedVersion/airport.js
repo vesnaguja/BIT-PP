@@ -3,7 +3,7 @@
 (function () {
   function Person(name, surname) {
     if (!name || !surname) {
-      throw new Error('Fields name and surname are required')
+      throw new Error('Person: Fields name and surname are required')
     }
     this.name = name;
     this.surname = surname;
@@ -16,7 +16,7 @@
     category = category || 'e';
     number = number || Math.round(Math.random() * 90 + 10);
     if (!['e', 'b'].includes(category)) {
-      throw new Error('Invalid category input');
+      throw new Error('Seeat: Invalid category input');
     }
 
     this.number = number;
@@ -28,21 +28,29 @@
 
   function Passenger(person, seat) {
     if (!person || !(person instanceof Person)) {
-      throw new Error('Invalid person input');
+      throw new Error('Passenger: Invalid person input');
     }
     if (!seat || !(seat instanceof Seat)) {
-      throw new Error('Invalid seat input');
+      throw new Error('Passenger: Invalid seat input');
     }
     this.person = person;
     this.seat = seat;
+
+    if (this.seat.category === 'B') {
+      var categoryLong = 'business';
+    }
+    if (this.seat.category === 'E') {
+      categoryLong = 'economy';
+    }
+
     this.getData = function () {
-      return this.seat.getData() + ', ' + this.person.getData();
+      return this.seat.number + ', ' + categoryLong + ', ' + this.person.getData();
     }
   }
 
   function Flight(relation, date) {
     if (!relation || !date) {
-      throw new Error('Fields relation and date are required')
+      throw new Error('Flight: Fields relation and date are required')
     }
     this.relation = relation;
     this.date = new Date(date);
@@ -50,11 +58,11 @@
 
     this.addPassenger = function (passenger) {
       if (!passenger || !(passenger instanceof Passenger)) {
-        throw new Error('Invalid passenger input')
+        throw new Error('Flight: Invalid passenger input')
       }
 
-      if (this.listOfPassengers.length > 100) {
-        throw new Error('Flight can only take 100 passengers.')
+      if (this.listOfPassengers.length + 1 > 100) { // +1 je za trenutnog putnika
+        throw new Error('Flight: Flight can only take 100 passengers.')
       }
 
       var sameSeat = this.listOfPassengers.find(function (e) {
@@ -62,7 +70,7 @@
       });
 
       if (sameSeat !== undefined) {
-        throw new Error('Passengers can not have the same seat number.')
+        throw new Error('Flight: Passengers can not have the same seat number.')
       }
 
       var samePerson = this.listOfPassengers.find(function (el) {
@@ -100,7 +108,7 @@
       var month = this.date.getMonth() + 1;
       var year = this.date.getFullYear();
       result += '\t' + day + '.' + month + '.' + year + ', ' + relationShort + '\n';
-      
+
       this.listOfPassengers.forEach(function (passenger) {
         result += '\t\t\t' + passenger.getData() + '\n'
       })
@@ -108,6 +116,18 @@
     }
     this.numberOfPassengers = function () {
       return this.listOfPassengers.length;
+    }
+
+    this.getBusinessP = function () {
+      var sum = 0;
+      this.listOfPassengers.forEach(function (passenger) {
+        if (passenger.seat.category == 'B') {
+          sum += 1;
+        }
+      })
+      return sum;
+
+      //return this.listOfPassengers.filter(function(passenger) { return passenger.seat.category === 'B'}).length
     }
 
   }
@@ -118,7 +138,7 @@
 
     this.addFlight = function (flight) {
       if (!flight || !(flight instanceof Flight)) {
-        throw new Error('Invalid flight input')
+        throw new Error('Airport: Invalid flight input')
       }
       this.listOfFlights.push(flight);
     }
@@ -131,10 +151,20 @@
       return count;
     }
 
-    this.getData = function () {
-      var result = 'Airport: ' + this.name + ', total passengers: ' + this.getTotalPassengerNumber() + '\n';
+    this.getAllBusinessP = function () {
+      var sum = 0;
       this.listOfFlights.forEach(function (flight) {
-        result += flight.getData();
+        sum += flight.getBusinessP();
+      })
+      return sum;
+    }
+
+
+    this.getData = function () {
+      var result = 'Airport: ' + this.name + ', total passengers: ' + this.getTotalPassengerNumber() + '\n' +
+        'Total airport number of passengers in business category:'+ this.getAllBusinessP() + '\n';
+      this.listOfFlights.forEach(function (flight) {
+        result += 'Total flight number of passengers in business category: ' + flight.getBusinessP() + '\n' + flight.getData();
       })
       return result;
     }
@@ -160,9 +190,9 @@
     var flight2 = createFlight('Barcelona - Belgrade', 'Nov 11 2017')
 
     var passenger1 = createPassenger('John', 'Snow', 1, 'b')
-    var passenger2 = createPassenger('Cersei', 'Lannister', 101, 'b')
+    var passenger2 = createPassenger('Cersei', 'Lannister', 2, 'b')
     var passenger3 = createPassenger('Daenerys', 'Targaryen', 14)
-    var passenger4 = createPassenger('Tyrion', 'Lannister')
+    var passenger4 = createPassenger('Tyrion', 'Lannister',)
 
     flight1.addPassenger(passenger1);
     flight1.addPassenger(passenger2);
