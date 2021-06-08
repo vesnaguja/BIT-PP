@@ -26,7 +26,7 @@
     if (!(continent instanceof Continent)) {
       throw new Error('Country: Invalid continent input')
     }
-    this.countryName = countryName.slice(0, 2).toUpperCase();;
+    this.countryName = countryName.slice(0, 2).toUpperCase();
     this.odds = odds;
     this.continent = continent;
   }
@@ -114,12 +114,67 @@
       return this.address.street + ', ' + this.address.postalCode + ' ' + this.address.city + ', sum of all bets: ' + this.getTotalBetAmount();
     }
 
+    this.numberOfPlayers = function () {
+      return this.listOfPlayers.length;
+    }
+
   }
 
   function BettingHouse(competition, numberOfPlayers) {
     this.competition = competition;
     this.listOfBettingPlaces = [];
     this.numberOfPlayers = numberOfPlayers;
+
+    this.addBettingPlace = function (bettingPlace) {
+      if (!bettingPlace || !(bettingPlace instanceof BettingPlace)) {
+        throw new Error('BettingHouse: Invalid Betting Place input');
+      }
+      this.listOfBettingPlaces.push(bettingPlace)
+    }
+
+    this.numOfBets = function () {
+      var sum = 0;
+      this.listOfBettingPlaces.forEach(function (bettingPlace) {
+        sum += listOfPlayers.length;
+      })
+      return sum;
+    }
+
+    this.getTotalBetsNumber = function () {
+      var sum = 0;
+      this.listOfBettingPlaces.forEach(function (bettingPlace) {
+        sum += bettingPlace.numberOfPlayers()
+      })
+      return sum;
+    }
+
+    this.betsOnCountry = function (country) {
+      var sum = 0;
+      this.listOfBettingPlaces.forEach(function (bettingPlace) {
+        bettingPlace.listOfPlayers.forEach(function (player) {
+          if (player.country.countryName === country)
+            sum += 1;
+        })
+      })
+      return sum;
+    }
+
+    this.getData = function () {
+
+      var result = this.competition + ', ' + this.listOfBettingPlaces.length + ' betting places' + ', ' + this.getTotalBetsNumber() + ' bets ' + '\n';
+
+      this.listOfBettingPlaces.forEach(function (bettingPlace) {
+        result += '\t\t' + bettingPlace.getData() + '\n';
+
+        bettingPlace.listOfPlayers.forEach(function (player) {
+          result += '\t\t\t\t' + player.getData() + '\n';
+        }) + '\n';
+      }); + '\n';
+
+      result += 'There are ' + this.betsOnCountry('SR') + ' bets on Serbia';
+      return result;
+    }
+
   }
 
   function createPlayer(name, surname, dateOfBirth, countryName, odds, continent, betAmount) {
@@ -129,23 +184,44 @@
     return new Player(person, betAmount, country);
   }
 
+  function createBettingPlace(address) {
+    return new BettingPlace(address);
+  }
+
   //testing
   try {
     var person1 = new Person('Pera', 'Peric', 'May 14, 1992');
     //console.log(person1.getData());
 
-    var country1 = new Country('Srbija', 4.76, continents.EUROPE);
+    var country1 = new Country('Srbija', 2, continents.EUROPE);
 
-    var player1 = createPlayer('Pera', 'Peric', 'May 14, 1992', 'Srbija', 4.76, continents.EUROPE, 1050);
-    console.log(player1.getData());
+    var player1 = createPlayer('Pera', 'Peric', 'May 14, 1992', 'Srbija', 2, continents.EUROPE, 1050);
+    var player2 = createPlayer('Jovan', 'Jovanovic', 'June 14, 1990', 'Srbija', 2, continents.EUROPE, 500);
+    var player3 = createPlayer('Petar', 'Petrovic', 'July 14, 1976', 'Grcka', 2, continents.EUROPE, 2000);
+    var player4 = createPlayer('Marko', 'Markovic', 'April 14, 1952', 'Srbija', 2, continents.EUROPE, 50);
+    //console.log(player1.getData());
 
     var address1 = new Address(country1, 'Beograd', '11000', 'Nemanjina', 4);
-    console.log(address1.getData());
+    var address2 = new Address(country1, 'Beograd', '11000', 'Juzni bulevar', 45);
+    //console.log(address1.getData());
 
-    //var bettingPlace1 = new BettingPlace(address1, player1);
-    //bettingPlace1.addPlayer(player1);
+    var bettingPlace1 = createBettingPlace(address1);
+    var bettingPlace2 = createBettingPlace(address2);
+
+    bettingPlace1.addPlayer(player1);
+    bettingPlace1.addPlayer(player2);
+    bettingPlace2.addPlayer(player3);
+    bettingPlace2.addPlayer(player4);
+
     //console.log(bettingPlace1.listOfPlayers);
     // console.log(bettingPlace1.getData());
+
+    var bettingHouse1 = new BettingHouse('Football World Cup Winner');
+
+    bettingHouse1.addBettingPlace(bettingPlace1);
+    bettingHouse1.addBettingPlace(bettingPlace2);
+
+    console.log(bettingHouse1.getData());
 
   } catch (error) {
     console.log('Error message: ' + error.message);
