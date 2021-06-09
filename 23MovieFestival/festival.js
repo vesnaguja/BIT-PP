@@ -12,9 +12,14 @@
     if (!genre || !(genre instanceof Genre)) {
       throw new Error('Movie: Invalid genre input')
     }
+
+    if (typeof (length) !== 'number') {
+      throw new Error('Movie: Invalid movie length input')
+    }
     this.title = title;
     this.genre = genre;
     this.length = length;
+
     this.getData = function () {
       return this.title + ', ' + this.length + 'min, ' + genre.getData();
     }
@@ -24,18 +29,39 @@
     this.date = new Date(date);
     this.listOfMovies = [];
     this.numOfMovies = this.listOfMovies.length;
+
     this.addMovie = function (movie) {
-      return this.listOfMovies.push(movie);
+      var movieGenre = movie.genre.name;
+
+      var listOfSameGenreMovies = this.listOfMovies.filter(function (m) {
+        return m.genre.name === movieGenre;
+      })
+
+      if (listOfSameGenreMovies.length + 1 > 4) { // trenutni broj filmova istog zanra kao trenutni + film koji pokusavamo da dodamo
+        throw new Error('Program cannot have more than 4 movies of the same genre')
+      }
+
+      if (this.programDuration() + movie.length > 480) { // trenutna duzina svih filmova u programu + duzina filma koji pokusavamo da dodamo
+        throw new Error('Length of all movies in a list can not be longer than 8 hours (480 min)')
+      }
+
+      this.listOfMovies.push(movie);
     }
+
     this.programDuration = function () {
       var duration = 0;
       this.listOfMovies.forEach(function (movie) {
         duration += movie.length;
       })
       return duration;
+
+      // return this.listOfMovies.reduce(function (total, movie) {
+      //   total += movie.length;
+      // }, 0);
     }
+
     this.getData = function () {
-      var result ='';     
+      var result = '';
       var day = this.date.getDate();
       var month = this.date.getMonth() + 1;
       var year = this.date.getFullYear();
@@ -47,9 +73,14 @@
     }
   }
 
-  function Festival(festivalName) {
+  function Festival(festivalName, maxNumOfMovies) {
     this.festivalName = festivalName;
     this.listOfPrograms = [];
+    this.maxNumOfMovies = maxNumOfMovies;
+    if (typeof (maxNumOfMovies) !== 'number') {
+      throw new Error('Festival: Invalid number for maximum number of movies input')
+    }
+
     this.numOfMoviesInAllProg = function () {
       var allMovies = 0;
       this.listOfPrograms.forEach(function (program) {
@@ -57,10 +88,20 @@
       })
       return allMovies;
     }
+
+
     this.addProgram = function (program) {
+      if (this.numOfMoviesInAllProg() + 1 >= maxNumOfMovies) {
+        throw new Error('Festival: Maximum number of movies is ' + this.maxNumOfMovies)
+      }
       return this.listOfPrograms.push(program);
     }
+
+
     this.getData = function () {
+      if (this.numOfMoviesInAllProg() === 0) {
+        return 'Program to be announced';
+      }
       var result = this.festivalName + ' has ' + this.numOfMoviesInAllProg() + ' movie titles \n';
       this.listOfPrograms.forEach(function (program) {
         result += '\t\t' + program.getData();
@@ -85,10 +126,11 @@
     var genre3 = new Genre('Western');
     var genre4 = new Genre('Comedy');
     // console.log(genre1.getData());
-    var movie1 = createMovie('Spider-Man: Homecoming', genre1, 133);
-    var movie2 = createMovie('War for the Planet of the Apes', genre2, 140);
-    var movie3 = createMovie('The Dark Tower', genre3, 95);
-    var movie4 = createMovie('Deadpool', genre4, 108);
+    var movie1 = createMovie('Spider-Man: Homecoming', genre2, 100);
+    var movie2 = createMovie('War for the Planet of the Apes', genre2, 100);
+    var movie3 = createMovie('The Dark Tower', genre2, 100);
+    var movie4 = createMovie('Deadpool', genre2, 100);
+    var movie5 = createMovie('Deadpool 2', genre3, 80);
     //console.log(movie1.getData());
     var program1 = createProgram('Oct-28-2017')
     var program2 = createProgram('Oct-29-2017')
@@ -96,12 +138,17 @@
     program1.addMovie(movie1);
     program1.addMovie(movie2);
     program1.addMovie(movie3);
+    program1.addMovie(movie4);
+    program1.addMovie(movie5);
     program2.addMovie(movie4);
+    program2.addMovie(movie5);
     //console.log(program1.getData());
-    var festival1 = new Festival('Weekend festival');
+    var festival1 = new Festival('Weekend festival', 8);
     festival1.addProgram(program1)
     festival1.addProgram(program2)
     console.log(festival1.getData());
+    var festival2 = new Festival('Kustendorf', 2);
+    console.log(festival2.getData());
     //console.log(festival1.listOfPrograms[0].listOfMovies[0]);
 
   } catch (error) {
