@@ -18,16 +18,16 @@ class Employee extends Person {
   }
 
   getData() {
-    return this.getFullName() + ' ' + this.salary;
+    return super.getFullName() + ' ' + this.salary;
   }
 
   getSalary() {
-    console.log('The salary is: ' + this.salary);
+    return ('The salary is: ' + this.salary);
   }
 
   increaseSalary() {
     this.salary += this.salary * 10 / 100;
-  } 
+  }
 }
 
 
@@ -39,7 +39,7 @@ class Developer extends Employee {
     this.specialization = specialization;
   }
   getSpecialization() {
-    console.log('The specialization is: ' + this.specialization);
+    return ('The specialization is: ' + this.specialization);
   }
 
 }
@@ -54,7 +54,7 @@ class Manager extends Employee {
     this.department = department;
   }
   getDepartment() {
-    console.log('The department is: ' + this.department);
+    return ('The department is: ' + this.department);
   }
 
   changeDepartment(newDep) {
@@ -65,7 +65,7 @@ class Manager extends Employee {
 
 var employee1 = new Employee('Marko', 'Markovic', 'tester', 3000);
 console.log(employee1.getData());
-employee1.getSalary(); 
+employee1.getSalary();
 employee1.increaseSalary();
 employee1.getSalary();
 

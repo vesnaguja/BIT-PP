@@ -21,7 +21,7 @@ App.prototype.like = function () {
 }
 
 App.prototype.showStars = function () {
-  console.log('This app has ' + this.stars + ' stars');
+  return ('This app has ' + this.stars + ' stars');
 }
 
 
@@ -36,7 +36,7 @@ WebApp.prototype = Object.create(App.prototype);
 WebApp.prototype.constructor = WebApp;
 
 WebApp.prototype.getData = function () {
-  console.log(this.printInfo() + ' ' + this.url + ' ' + this.technologies);
+ return (this.printInfo() + ' ' + this.url + ' ' + this.technologies);
 }
 
 WebApp.prototype.reactBased = function () {
@@ -57,7 +57,7 @@ MobileApp.prototype = Object.create(App.prototype);
 MobileApp.prototype.constructor = MobileApp;
 
 MobileApp.prototype.getData = function () {
-  console.log(this.printInfo() + ' ' + this.platforms);
+  return (this.printInfo() + ' ' + this.platforms);
 }
 
 MobileApp.prototype.forAndroid = function () {

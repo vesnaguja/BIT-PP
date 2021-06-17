@@ -22,7 +22,7 @@ class App {
   }
 
   showStars() {
-    console.log('The number of stars are ' + this.stars);
+   return ('The number of stars are ' + this.stars);
   }
 }
 
@@ -76,16 +76,16 @@ class MobileApp extends App {
 // testing
 
 var web1 = new WebApp('GitHub', 'https://github.com', 'jQuery', 'CC', 3);
-//console.log(web1.isCCLicence());
-//console.log(web1.reactBased());
-//console.log(web1.stars);
-//console.log(web1.like());
+console.log(web1.isCCLicence());
+console.log(web1.reactBased());
+console.log(web1.stars);
+console.log(web1.like());
 web1.showStars();
 
 var mob1 = new MobileApp('PlayStore', 'Android', 'CC', 4);
-//console.log(mob1.getMobileData());
-// console.log(mob1.forAndroid());
-// console.log(mob1.stars);
-// console.log(mob1.like());
-// console.log(mob1.stars);
+console.log(mob1.getMobileData());
+console.log(mob1.forAndroid());
+console.log(mob1.stars);
+console.log(mob1.like());
+console.log(mob1.stars);
 mob1.showStars();

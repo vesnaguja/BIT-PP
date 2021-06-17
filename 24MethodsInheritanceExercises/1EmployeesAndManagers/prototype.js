@@ -68,19 +68,20 @@ Manager.prototype.changeDepartment = function (newDep) {
 
 
 
-
+// testing
 var employee1 = new Employee('Marko', 'Markovic', 'programmer', 5000);
-//console.log(employee1.getData());
-//console.log(employee1.getSalary());
+console.log(employee1.getData());
+console.log(employee1.getSalary());
 console.log(employee1.increaseSalary());
+console.log(employee1.getSalary());
 console.log(employee1);
 
 var developer1 = new Developer('Pera', 'Peric', 'developer', 6000, 'front-end');
-//console.log(developer1.getSpecialization());
+console.log(developer1.getSpecialization());
 
 var manager1 = new Manager('Jovan', 'Jovanovic', 'manager', 7000, 'head front-end')
-//console.log(manager1);
+console.log(manager1);
 
-// console.log(manager1.getDepartment());
-// console.log(manager1.changeDepartment('head back-end'));
-// console.log(manager1.department);
+console.log(manager1.getDepartment());
+console.log(manager1.changeDepartment('head back-end'));
+console.log(manager1.department);
