@@ -7,8 +7,7 @@ form {
   flex-direction: column;
 }
 #movie-input {
-  display: block;
-  padding-bottom: 10px;
+  display: block;  
 }
 
 #movie-fieldset {
@@ -40,13 +39,17 @@ input {
   margin: 10px 0;
 }
 
-button {
+option:nth-child(even) {
+  background-color: white;
+}
+
+.button {
   background-color: rgb(76, 175, 79);
   color: white;
   border: none;
   padding: 10px;
   width: 100%;
-  margin: 10px 0;
+  margin-top: 10px;
 }
 
 

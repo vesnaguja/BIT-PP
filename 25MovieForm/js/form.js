@@ -1,0 +1,140 @@
+var festival = new Festival();
+
+var inputTitleElement = document.querySelector('#title');
+var inputLengthElement = document.querySelector('#length');
+var selectGenreElement = document.querySelector('#genre');
+
+// var divMovieData = document.querySelector('#movie-error-and-list');
+// var movieErrorElement = document.createElement('p').setAttribute('id', 'movie-error');
+// divMovieData.appendChild(movieErrorElement);
+// var ulMovieListElement = document.createElement('ul').setAttribute('id', 'movie-list');
+// divMovieData.append(ulMovieListElement);
+
+var movieErrorElement = document.querySelector('#movie-error');
+var movieSelectElement = document.querySelector('#movie-select');
+var ulMovieListElement = document.querySelector('#movie-list');
+var createMovieButton = document.querySelector('#create-movie');
+
+var inputDateElement = document.querySelector('#date');
+var programErrorElement = document.querySelector('#program-error');
+var ulProgramListElement = document.querySelector('#program-list');
+var programSelectElement = document.querySelector('#program-select');
+var createProgramButton = document.querySelector('#create-program')
+
+var addMovieToProgramButton = document.querySelector('#add-movie');
+
+var selectMovieElement = document.querySelector('#movie-select');
+var selectProgramElement = document.querySelector('#program-select');
+
+
+
+function addMovie() {
+  var titleValue = inputTitleElement.value;
+  var lengthValue = inputLengthElement.value;
+  var genreValue = selectGenreElement.value;
+
+  if (!titleValue) {
+    movieErrorElement.textContent = 'Title is required!';
+    return;
+  }
+  if (!lengthValue) {
+    movieErrorElement.textContent = 'Length is required!'
+    return;
+  }
+  if (!genreValue) {
+    movieErrorElement.textContent = 'Genre is required!';
+    return;
+  }
+  movieErrorElement.textContent = '';
+  var movie = new Movie(titleValue, lengthValue, genreValue);
+
+  festival.listOfAllMovies.push(movie);
+  var index = festival.listOfAllMovies.length - 1;
+
+  var movieDataLi = document.createElement('li');
+  movieDataLi.textContent = movie.getData();
+  ulMovieListElement.appendChild(movieDataLi);
+
+  var movieOption = document.createElement('option');
+  movieOption.textContent = movie.title;
+  movieOption.setAttribute('value', index);
+  movieSelectElement.appendChild(movieOption);
+
+  inputTitleElement.value = '';
+  inputLengthElement.value = '';
+  selectGenreElement.value = '';
+}
+
+
+
+
+function addProgram() {
+  if (!inputDateElement.value) {
+    programErrorElement.textContent = 'Date required!';
+    return;
+  }
+  var date = new Date(inputDateElement.value);
+  if (date.getTime() < Date.now()) {
+    programErrorElement.textContent = 'Invalide date!';
+    return;
+  }
+  hasProgramWithSameDate = festival.listOfPrograms.some(function name(program) {
+    return date.getTime() === program.date.getTime();
+  })
+
+  if (hasProgramWithSameDate) {
+    programErrorElement.textContent = 'Program for that date already exists.';
+    return;
+  }
+  programErrorElement.textContent = '';
+
+  var program = new Program(date);
+  festival.listOfPrograms.push(program);
+  var index = festival.listOfPrograms.length - 1;
+
+  var li = document.createElement('li');
+  li.textContent = program.getData();
+  ulProgramListElement.appendChild(li);
+
+  var option = document.createElement('option');
+  option.setAttribute('value', index);
+  option.textContent = program.getData();
+  programSelectElement = appendChild(option);
+}
+
+
+
+
+function addMovieToProgram() {
+  var programListElements = document.querySelectorAll('#program-list li');
+
+  var programSelectOptions = document.querySelectorAll('#program-select option');
+
+  var movieValue = selectMovieElement.value;
+  var programValue = selectProgramElement.value;
+
+  var movie = festival.listOfAllMovies[movieValue];
+  var program = festival.listOfPrograms[programValue];
+  var oldProgramData = program.getData();
+
+  program.addMovie(movie);
+  
+  programListElements.forEach(function (li) {
+    if(li.textContent === oldProgramData) {
+      li.textContent = program.getData();
+    }
+  });
+
+  programSelectOptions.forEach(function (option) {
+    if(option.textContent === oldProgramData) {
+      option.textContent = program.getData();
+    }
+  })
+
+}
+
+
+
+createMovieButton.addEventListener('click', addMovie);
+createProgramButton.addEventListener('click', addProgram);
+addMovieToProgramButton.addEventListener('click', addMovieToProgram);

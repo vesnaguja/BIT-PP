@@ -19,19 +19,17 @@
   <!-- Kreiranje filma -->
   <fieldset>
 
-
     <p>Please fill in the form</p>
+    <p id="movie-input">Movie</p>
 
-    <label for="movie" id="movie-input">Movie</label>
+    <form>
+      <fieldset id="movie-fieldset">
 
-    <fieldset id="movie-fieldset">
-
-      <form action="">
         <label for="title">Title</label>
-        <input type="text" value="" placeholder="Title" id="title">
+        <input type="text" placeholder="Title" id="title">
 
         <label for="length">Length (min)</label>
-        <input type="number" value="" placeholder="Length in min" id="length">
+        <input type="number" placeholder="Length in min" id="length">
 
         <select class="select-option" id="genre">
           <option value="-">-</option>
@@ -48,36 +46,37 @@
           <option value="sci-fi">Sci-fi</option>
         </select>
 
-        <button type="button" id="create-movie">Create movie</button>
-
-        <!-- <p id="movie-error"></p>
-        <ul id="movie-list"></ul> -->
-
-      </form>
-    </fieldset>
+        <input type="button" value="Create movie" class="button" id="create-movie"></input>
 
 
+        <!-- <div id="movie-error-and-list"></div> -->
+        <p id="movie-error"></p>
+        <ul id="movie-list"></ul>
 
+      </fieldset>
+    </form>
 
     <!-- Kreiranje programa -->
-    <label for="program" id="program-input">Program</label>
+    <p id="program-input">Program</p>
 
-    <fieldset id="program-fildset">
 
-      <form action="">
+
+    <form>
+      <fieldset id="program-fildset">
+
         <label for="date">Date</label>
         <input type="date" id="date">
 
-        <button type="button" id="create-program">Create program</button>
-
-        <!-- <p id="program-error"></p>
-        <ul id="program-list"></ul> -->
-
-      </form>
+        <input type="button" value="Create program" class="button" id="create-program"></input>
 
 
-      <!-- Dodavanje filma u program -->
-      <form action="">
+        <p id="program-error"></p>
+        <ul id="program-list"></ul>
+
+
+
+        <!-- Dodavanje filma u program -->
+
         <label for="movie-select">Movie</label>
 
         <select class="select-option" id="movie-select">
@@ -90,11 +89,10 @@
           <option value="-">-</option>
         </select>
 
-        <button type="button" id="add-movie">Add movie to program</button>
+        <input type="button" value="Add movie to program" class="button" id="add-movie"></input>
 
-      </form>
-
-    </fieldset>
+      </fieldset>
+    </form>
 
 
   </fieldset>

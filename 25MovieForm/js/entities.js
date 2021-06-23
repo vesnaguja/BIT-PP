@@ -1,5 +1,5 @@
 function Festival() {
-  this.listOfMovies = [];
+  this.listOfAllMovies = [];
   this.listOfPrograms = [];
 }
 
@@ -19,7 +19,7 @@ Movie.prototype.getGenreCode = function () {
 }
 
 Movie.prototype.getData = function () {
-  return this.title + ', ' + this.length + 'min, ' + this.getGenreCode;
+  return this.title + ', ' + this.length + 'min, ' + this.getGenreCode();
 }
 
 
