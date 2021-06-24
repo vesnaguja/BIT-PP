@@ -1,13 +1,3 @@
-function Festival() {
-  this.listOfAllMovies = [];
-  this.listOfPrograms = [];
-}
-
-
-
-
-
-
 function Movie(title, length, genre) {
   this.title = title;
   this.length = parseInt(length);
@@ -75,4 +65,15 @@ Program.prototype.getData = function () {
 
 
 
+function Festival() {
+  this.listOfAllMovies = [];
+  this.listOfPrograms = [];
+}
 
+Festival.prototype.addMovie = function (movie) {
+  this.listOfAllMovies.push(movie);
+}
+
+Festival.prototype.addProgram = function (program) {
+  this.listOfPrograms.push(program);
+}

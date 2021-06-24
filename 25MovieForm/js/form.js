@@ -46,6 +46,7 @@ function addMovie() {
     return;
   }
   movieErrorElement.textContent = '';
+
   var movie = new Movie(titleValue, lengthValue, genreValue);
 
   festival.listOfAllMovies.push(movie);
@@ -78,7 +79,7 @@ function addProgram() {
     programErrorElement.textContent = 'Invalide date!';
     return;
   }
-  hasProgramWithSameDate = festival.listOfPrograms.some(function name(program) {
+  hasProgramWithSameDate = festival.listOfPrograms.some(function (program) {
     return date.getTime() === program.date.getTime();
   })
 
@@ -89,6 +90,7 @@ function addProgram() {
   programErrorElement.textContent = '';
 
   var program = new Program(date);
+
   festival.listOfPrograms.push(program);
   var index = festival.listOfPrograms.length - 1;
 
@@ -99,7 +101,7 @@ function addProgram() {
   var option = document.createElement('option');
   option.setAttribute('value', index);
   option.textContent = program.getData();
-  programSelectElement = appendChild(option);
+  programSelectElement.appendChild(option);
 }
 
 
@@ -117,16 +119,32 @@ function addMovieToProgram() {
   var program = festival.listOfPrograms[programValue];
   var oldProgramData = program.getData();
 
-  program.addMovie(movie);
+
   
+  var sameMovie = program.listOfMovies.some(function (movie) {
+
+    return movie.getData() === program.movie.getData();
+    
+  })
+
+  if (sameMovie) {
+    alert('Movie already exists in program');
+  }
+
+
+
+  program.addMovie(movie);
+
+
+
   programListElements.forEach(function (li) {
-    if(li.textContent === oldProgramData) {
+    if (li.textContent === oldProgramData) {
       li.textContent = program.getData();
     }
   });
 
   programSelectOptions.forEach(function (option) {
-    if(option.textContent === oldProgramData) {
+    if (option.textContent === oldProgramData) {
       option.textContent = program.getData();
     }
   })

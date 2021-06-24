@@ -60,23 +60,21 @@
     <p id="program-input">Program</p>
 
 
-
-    <form>
-      <fieldset id="program-fildset">
-
+    <fieldset id="program-fildset">
+      <form>
         <label for="date">Date</label>
         <input type="date" id="date">
 
         <input type="button" value="Create program" class="button" id="create-program"></input>
+      </form>
+
+      <p id="program-error"></p>
+      <ul id="program-list"></ul>
 
 
-        <p id="program-error"></p>
-        <ul id="program-list"></ul>
 
-
-
-        <!-- Dodavanje filma u program -->
-
+      <!-- Dodavanje filma u program -->
+      <form>
         <label for="movie-select">Movie</label>
 
         <select class="select-option" id="movie-select">
@@ -90,9 +88,10 @@
         </select>
 
         <input type="button" value="Add movie to program" class="button" id="add-movie"></input>
+      </form>
 
-      </fieldset>
-    </form>
+    </fieldset>
+
 
 
   </fieldset>
