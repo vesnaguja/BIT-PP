@@ -75,7 +75,7 @@
 
       var samePerson = this.listOfPassengers.find(function (el, index) {
         // el.person.getData() === passenger.person.getData();
-        return el.person.getData === passenger.person.name && el.person.surname === passenger.person.surname;
+        return el.person.name === passenger.person.name && el.person.surname === passenger.person.surname;
       });
 
       if (samePerson !== undefined) {
