@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./CSS/main.css">
+  <script src="./JS/subject.js" defer></script>
+  <script src="./JS/student.js" defer></script>
+  <script src="./JS/exam.js" defer></script>
+  <script src="./JS/form.js" defer></script>
+  <script src="./JS/app.js" defer></script>
+
+  <title>Exam statistic</title>
+</head>
+
+<body>
+  <h1>Exam statistics</h1>
+  <div id="wrapper">
+    <header>
+      <h3>Exam statistic June</h3>
+
+      <p>Total students: </p>
+
+      <input type="number" placeholder="PASSED" id="passed-input">
+      <input type="number" placeholder="FAILED" id="failed-input">
+    </header>
+
+
+    <div id="student-data">
+      <form action="">
+        <fieldset>
+          <select name="" id="subject">
+            <option value="js">JavaScript</option>
+            <option value="web">Web</option>
+          </select>
+
+          <input type="text" placeholder="Name Surname" id="student">
+          <input type="number" min="1" max="10" placeholder="Grade" id="grade">
+          <button type="submit" id="add">ADD</button>
+        </fieldset>
+      </form>
+    </div>
+
+  </div>
+</body>
+
+</html>
