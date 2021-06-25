@@ -16,23 +16,25 @@ header {
 }
 
 h3,
-p {
+.total-students-paragraph {
   text-align: center;
   color: white;
 }
 
-header input {
+header div {
   border: none;
-  padding: 10px;
+  padding: 0 10px;
   width: 30%;
   margin: 5px auto;
+  display: flex;
+  justify-content: space-between;
 }
 
-#passed-input {
+#passed-output {
   background-color: rgb(51, 184, 179);
 }
 
-#failed-input {
+#failed-output {
   background-color: rgb(251, 82, 79);
 }
 
@@ -83,4 +85,66 @@ fieldset {
   font-weight: bold;
   font-size: 1.5rem;
   padding: 0;
+}
+
+#error-message {
+  text-align: center;
+}
+
+h4 {
+  padding: 0 10px;
+}
+
+.container {
+  width: 80vw;
+  margin: 0 auto;
+}
+
+.statistics {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.ststistics-div {
+  display: inline-block;
+}
+
+.red {
+  color: rgb(251, 82, 79);  
+}
+.blue {
+  color: rgb(51, 184, 179);
+}
+.white {
+  color: white;
+}
+
+#passed,
+#failed {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 30vw;
+  padding: 0 10px;
+}
+
+/* #passed:nth-child(even) {
+  background-color: darkgray;
+}
+
+#passed:nth-child(odd) {
+  background-color: lightgrey;
+}
+
+#failed:nth-child(even) {
+  background-color: darkgray;
+}
+
+#failed:nth-child(odd) {
+  background-color: lightgray;
+} */
+
+.flex {
+  display: flex;
+  justify-content: space-between;
 }

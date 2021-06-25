@@ -5,7 +5,7 @@ function Movie(title, length, genre) {
 }
 
 Movie.prototype.getGenreCode = function () {
-  return (this.genre[0] + this.genre[this.genre.length - 1]).toString().toUpperCase();
+  return (this.genre[0] + this.genre[this.genre.length - 1]).toUpperCase();
 }
 
 Movie.prototype.getData = function () {

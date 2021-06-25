@@ -5,13 +5,13 @@ function Exam(subject, student, grade) {
 }
 
 Exam.prototype.getExamInfo = function () {
-  return this.getSubjectname + ', ' + this.getStudentData;
+  return this.subject.getSubjectName() + ' - ' + this.student.getStudentData();
 }
 
 Exam.prototype.hasPassed = function () {
   if(this.grade > 5) {
-    return 'The student has passed the exame.'
+    return true;
   } else {
-    return 'The student has not passed the exame.'
+    return false;
   }
 }

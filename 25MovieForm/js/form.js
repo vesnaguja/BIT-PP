@@ -33,19 +33,13 @@ function addMovie() {
   var lengthValue = inputLengthElement.value;
   var genreValue = selectGenreElement.value;
 
-  if (!titleValue) {
-    movieErrorElement.textContent = 'Title is required!';
+  if (!titleValue || !lengthValue || !genreValue.replace('-', '')) {
+    movieErrorElement.textContent = 'All input fields are required!';
+    // movieErrorElement.classList.add('red');
     return;
+  } else {
+    movieErrorElement.textContent = '';
   }
-  if (!lengthValue) {
-    movieErrorElement.textContent = 'Length is required!'
-    return;
-  }
-  if (!genreValue) {
-    movieErrorElement.textContent = 'Genre is required!';
-    return;
-  }
-  movieErrorElement.textContent = '';
 
   var movie = new Movie(titleValue, lengthValue, genreValue);
 
@@ -84,6 +78,7 @@ function addProgram() {
   })
 
   if (hasProgramWithSameDate) {
+    //alert('Program for that date already exists.');
     programErrorElement.textContent = 'Program for that date already exists.';
     return;
   }
@@ -119,12 +114,9 @@ function addMovieToProgram() {
   var program = festival.listOfPrograms[programValue];
   var oldProgramData = program.getData();
 
-
-  
-  var sameMovie = program.listOfMovies.some(function (movie) {
-
-    return movie.getData() === program.movie.getData();
-    
+  // da ne dodam isti film 2 puta u program
+  var sameMovie = program.listOfMovies.some(function (currentMovie) {
+    return movie.getData() === currentMovie.getData();
   })
 
   if (sameMovie) {

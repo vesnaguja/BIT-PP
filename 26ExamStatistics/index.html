@@ -16,31 +16,71 @@
 </head>
 
 <body>
-  <h1>Exam statistics</h1>
-  <div id="wrapper">
-    <header>
-      <h3>Exam statistic June</h3>
+  <div class="container">
 
-      <p>Total students: </p>
+    <h1>Exam statistics</h1>
+    <div id="wrapper">
+      <header>
+        <h3>Exam statistic June</h3>
 
-      <input type="number" placeholder="PASSED" id="passed-input">
-      <input type="number" placeholder="FAILED" id="failed-input">
-    </header>
+        <p class="total-students-paragraph">Total students: <span id="total-students">0</span></p>
+
+        <div id="passed-output">
+          <p>PASSED <span id="passed-number" class="white">0</span></p>
+        </div>
+        <div id="failed-output">
+          <p>FAILED <span id="failed-number" class="white">0</span> <span id="failed-percentage" class="white">0</span><span class="white">%</span></p>
+        </div>
+
+      </header>
 
 
-    <div id="student-data">
-      <form action="">
-        <fieldset>
-          <select name="" id="subject">
-            <option value="js">JavaScript</option>
-            <option value="web">Web</option>
-          </select>
+      <div id="student-data">
+        <form action="">
+          <fieldset>
+            <select name="" id="subject">
+              <option value=""></option>
+              <option value="js">JavaScript</option>
+              <option value="web">Web</option>
+            </select>
 
-          <input type="text" placeholder="Name Surname" id="student">
-          <input type="number" min="1" max="10" placeholder="Grade" id="grade">
-          <button type="submit" id="add">ADD</button>
-        </fieldset>
-      </form>
+            <input type="text" placeholder="Name Surname" id="student">
+
+            <!-- <select placeholder="Grade" id="grade">  
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select> -->
+
+            <input type="number" id="grade" placeholder="Grade">
+
+            <input type="button" value="ADD" id="add"></input>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+
+    <p class="red" id="error-message"></p>
+
+    <div class="statistics">
+
+      <div class="ststistics-div">
+        <h4>PASSED</h4>
+        <div id="passed"></div>
+      </div>
+
+      <div class="ststistics-div">
+        <h4 class="red">FAILED</h4>
+        <div id="failed"></div>
+      </div>
+
     </div>
 
   </div>
