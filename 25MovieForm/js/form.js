@@ -4,12 +4,6 @@ var inputTitleElement = document.querySelector('#title');
 var inputLengthElement = document.querySelector('#length');
 var selectGenreElement = document.querySelector('#genre');
 
-// var divMovieData = document.querySelector('#movie-error-and-list');
-// var movieErrorElement = document.createElement('p').setAttribute('id', 'movie-error');
-// divMovieData.appendChild(movieErrorElement);
-// var ulMovieListElement = document.createElement('ul').setAttribute('id', 'movie-list');
-// divMovieData.append(ulMovieListElement);
-
 var movieErrorElement = document.querySelector('#movie-error');
 var movieSelectElement = document.querySelector('#movie-select');
 var ulMovieListElement = document.querySelector('#movie-list');
@@ -35,7 +29,6 @@ function addMovie() {
 
   if (!titleValue || !lengthValue || !genreValue.replace('-', '')) {
     movieErrorElement.textContent = 'All input fields are required!';
-    // movieErrorElement.classList.add('red');
     return;
   } else {
     movieErrorElement.textContent = '';
