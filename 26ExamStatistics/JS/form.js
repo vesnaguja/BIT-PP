@@ -23,15 +23,28 @@ function startWithCapital(word) {
   return word[0] === word[0].toUpperCase();
 }
 
+
 function handleInput() {
   // collect data
   var subjectValue = selectSubject.value;
   var studentValue = inputStudent.value;
   var gradeValue = inputGrade.value;
 
+  // brisanje input polja
+  selectSubject.value = '';
+  inputStudent.value = '';
+  inputGrade.value = '';
+
+  // reset error message to ''
+  errorMessage.textContent = '';
+
   // Array Destructuring 
   var [fname, lname] = studentValue.split(' ');
 
+  var student = new Student(fname, lname);
+  var subject = new Subject(subjectValue);
+
+  var exam = new Exam(subject, student, gradeValue);
 
   // validacija
   if (subjectValue === '') {
@@ -47,28 +60,27 @@ function handleInput() {
     return;
   }
 
-  if(!startWithCapital(fname) || !startWithCapital(lname)) {
+  if (!startWithCapital(fname) || !startWithCapital(lname)) {
     errorMessage.textContent = 'Name and surname of a student should start with capitals.'
     return;
   }
-  
-  errorMessage.textContent = '';
 
-  var student = new Student(fname, lname);
-  var subject = new Subject(subjectValue);
+  // provera da li uneti predmet/student (exam) vec postoji
+  var examsWithSameInfo = examList.find(function (el) {
+    return exam.getExamInfo() === el.getExamInfo()
+  });
 
-  var exam = new Exam(subject, student, gradeValue);
+  if (examsWithSameInfo) {
+    errorMessage.textContent = 'Student has grade for that subject.';
+    return;
+  }
 
+  // dodaj exam u listu
   examList.push(exam);
 
 
   addExamToBottomList(exam);
   updateStats();
-
-  // brisanje iput polja
-  selectSubject.value = '';
-  inputStudent.value = '';
-  inputGrade.value = '';
 }
 
 function addExamToBottomList(exam) {
@@ -83,20 +95,30 @@ function addExamToBottomList(exam) {
   examContainer.appendChild(gradeParagraph);
 
 
+  // hak za bg-color even i odd
+  var passedCount = examList.filter(function (e) {
+    return e.hasPassed();
+  }).length;
+
+  var failedCount = examList.filter(function (e) {
+    return !e.hasPassed();
+  }).length; // failedCount = examList.length - passedCount
+
   if (exam.hasPassed()) {
     // ubaci ga u passed listu
     gradeParagraph.classList.add('blue');
+    examContainer.classList.add((passedCount % 2 === 0) ? 'odd' : 'even');
     passedDiv.appendChild(examContainer);
   } else {
     // ubaci ga u failed listu
     gradeParagraph.classList.add('red');
+    examContainer.classList.add((failedCount % 2 === 0) ? 'odd' : 'even');
     failedDiv.appendChild(examContainer);
-
   }
 }
 
 function updateStats() {
-  totalStudentsElement.innerText = examList.length;
+  totalStudentsElement.textContent = examList.length;
   numberOfPassedStudents.innerText = examList.filter(e => e.hasPassed()).length;
 
   var failedStudentCount = examList.filter(function (el) {
@@ -105,7 +127,6 @@ function updateStats() {
 
   numberOfFailedStudents.innerText = failedStudentCount;
   studentsFailedPercentage.innerHTML = (failedStudentCount * 100 / examList.length).toFixed();
-
 }
 
 

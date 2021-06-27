@@ -31,7 +31,7 @@ header div {
 }
 
 #passed-output {
-  background-color: rgb(51, 184, 179);
+  background-color: rgb(51, 184, 179);  
 }
 
 #failed-output {
@@ -128,23 +128,34 @@ h4 {
   padding: 0 10px;
 }
 
-/* #passed:nth-child(even) {
+ /* div.passed:nth-of-type(odd) {
+  background-color: lightgray;
+}  */
+/* #failed:nth-child(even) {
   background-color: darkgray;
-}
+} */
 
-#passed:nth-child(odd) {
+/* #passed:nth-child(odd) {
   background-color: lightgrey;
-}
-
-#failed:nth-child(even) {
-  background-color: darkgray;
 }
 
 #failed:nth-child(odd) {
   background-color: lightgray;
-} */
+}  */ 
 
 .flex {
   display: flex;
   justify-content: space-between;
 }
+
+.odd {
+  background-color: lightgray;
+  padding: 0 10px;
+}
+
+.even {
+  background-color: darkgray;
+  padding: 0 10px;
+}
+
+

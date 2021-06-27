@@ -20,8 +20,7 @@ var addMovieToProgramButton = document.querySelector('#add-movie');
 var selectMovieElement = document.querySelector('#movie-select');
 var selectProgramElement = document.querySelector('#program-select');
 
-
-
+// kreiranje filma
 function addMovie() {
   var titleValue = inputTitleElement.value;
   var lengthValue = inputLengthElement.value;
@@ -54,8 +53,7 @@ function addMovie() {
 }
 
 
-
-
+// kreiranje programa
 function addProgram() {
   if (!inputDateElement.value) {
     programErrorElement.textContent = 'Date required!';
@@ -92,12 +90,9 @@ function addProgram() {
   programSelectElement.appendChild(option);
 }
 
-
-
-
+// dodavanje filma u program
 function addMovieToProgram() {
   var programListElements = document.querySelectorAll('#program-list li');
-
   var programSelectOptions = document.querySelectorAll('#program-select option');
 
   var movieValue = selectMovieElement.value;
@@ -105,22 +100,18 @@ function addMovieToProgram() {
 
   var movie = festival.listOfAllMovies[movieValue];
   var program = festival.listOfPrograms[programValue];
+  
   var oldProgramData = program.getData();
 
   // da ne dodam isti film 2 puta u program
   var sameMovie = program.listOfMovies.some(function (currentMovie) {
     return movie.getData() === currentMovie.getData();
-  })
-
+  })  
   if (sameMovie) {
     alert('Movie already exists in program');
   }
 
-
-
   program.addMovie(movie);
-
-
 
   programListElements.forEach(function (li) {
     if (li.textContent === oldProgramData) {
@@ -135,8 +126,6 @@ function addMovieToProgram() {
   })
 
 }
-
-
 
 createMovieButton.addEventListener('click', addMovie);
 createProgramButton.addEventListener('click', addProgram);
