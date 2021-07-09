@@ -8,9 +8,8 @@ function Movie(title, length, genre) {
 }
 
 Movie.prototype.getData = function () {
-  return this.title + ', ' + this.length + 'min, ' + (this.genre[0] + this.genre[this.genre.length - 1]).toUpperCase(); //pitaj kako toUpperCase sa template strings
-  //return `${this.title}, ${this.length}min, ${this.genre[0] + this.genre[this.genre.length-1]}`;
-
+  //return this.title + ', ' + this.length + 'min, ' + (this.genre[0] + this.genre[this.genre.length - 1]).toUpperCase(); 
+  return `${this.title}, ${this.length}min, ${(this.genre[0] + this.genre[this.genre.length-1]).toUpperCase()}`;
 }
 
 // konstruktorska f-ja za program
