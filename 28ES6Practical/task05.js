@@ -3,3 +3,8 @@
 	Output: ['babel.js, 'JS standard']
 */
 
+const words = ['compiler', 'transpiler', 'babel.js', 'JS standard', 'linter'];
+
+const filterJS = words => words.filter(word => word.toLowerCase().includes('js'))
+
+console.log(filterJS(words));

@@ -5,12 +5,14 @@
 
 const array = [1.6, 11.34, 29.23, 7, 3.11, 18];
 
-const indexesOfGreaterThan10 = [];
+const indexesOfGreaterThan10 = array => {
+	let arrayOfInd = [];
+	array.forEach((el, i) => {
+		if (el > 10) {
+			arrayOfInd.push(i);
+		}	
+	})
+	return arrayOfInd;
+}
 
-array.forEach((el, i) => {
-	if (el>10) {
-		indexesOfGreaterThan10.push(i);
-	}
-})
-
-console.log(indexesOfGreaterThan10);
+console.log(indexesOfGreaterThan10(array));

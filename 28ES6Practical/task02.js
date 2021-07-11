@@ -2,23 +2,22 @@
 	Input: [{ name: “Banana”, price: 120 }, {name: “Orange”,  price: 100}]
 	Output: [{ name: “Banana”, price: 144 }, { name: “Orange”,  price: 120 }] // product full price
 	Output2: [ 24, 20 ] // tax only
+    */
 
-const products = [{ name: "Banana", price: 120.23, date: new Date() }, { name: "Orange", price: 100, date: new Date() }]
 
-const productsWithTax = products.map(product => {
+const calcSaleTax = ({name, price}) => {
+    const tax = 20;
+    price = price + price * tax / 100;
+    return {name, price}
+};
 
-    const { price: prodPrice } = product;
 
-    const newProd = {
-        ...product,
-        price: Number.parseFloat(prodPrice),
-        priceWithTax: prodPrice * 1.2,
-        tax: prodPrice * 0.2
+class Product {
+    constructor(name, price) {
+        this.name = name;
+        this.price = price;
     }
+}
 
-    return newProd
-})
-
-console.log(products);
-console.log(productsWithTax);
-*/
+console.log(calcSaleTax({name:'Banana', price:120}));
+console.log(calcSaleTax({name:'Orange', price:100}));

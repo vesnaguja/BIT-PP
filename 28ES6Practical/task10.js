@@ -7,7 +7,6 @@
 */
 
 const array = [3, 11, 9, 5, 6];
-const isAllPositive = array.some(n => n < 0);
+const isAllPositive = array => array.some(n => n < 0);
 
-
-console.log(!isAllPositive ? 'yes' : 'no');
+console.log(!isAllPositive(array) ? 'yes' : 'no');

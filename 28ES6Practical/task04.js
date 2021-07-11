@@ -5,6 +5,6 @@
 
 var array = [6, 11, 9, 0, 3];
 
-var filtersEven = array.filter(num => num % 2 === 0)
+var filtersEven = array => array.filter(num => num % 2 === 0)
 
-console.log(filtersEven);
+console.log(filtersEven(array));

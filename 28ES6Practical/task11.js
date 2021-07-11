@@ -4,6 +4,6 @@ Output: 48
 */
 
 const array = [2, 8, 3];
-const product = array.reduce((a, b) => a * b)
+const product = array => array.reduce((a, b) => a * b)
 
-console.log(product);
+console.log(product(array));

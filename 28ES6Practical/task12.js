@@ -4,5 +4,5 @@ Output: 8
 */
 
 const array = [2, 7, 3, 8, 5.4];
-const max = Math.max(...array);
-console.log(max);
+const max = array => Math.max(...array);
+console.log(max(array));
