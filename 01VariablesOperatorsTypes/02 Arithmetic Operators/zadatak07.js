@@ -8,7 +8,7 @@
       var articles = 98 * KilB;
 
       console.log(USB);
-      console.log(USB/articles);*
+      console.log(USB/articles);
 
   // Bolji način:
       let mbInGB = 1000;

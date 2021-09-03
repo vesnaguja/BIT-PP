@@ -5,12 +5,12 @@
 * Each variable has to start with a different type of character.
 Print them all out in the console and check their types.*/
 
-      var name = 'Vesna';
+      var myName = 'Vesna';
       var age = 34;
       var havingCat = false;
-      console.log(name);
+      console.log(myName);
       console.log(age);
       console.log(havingCat);
-      console.log(typeof name);
-      console.log(typeof age);
-      console.log(typeof havingCat);
+      console.log(typeof myName); // string
+      console.log(typeof age); // number
+      console.log(typeof havingCat); // boolean
