@@ -6,9 +6,14 @@
 var a = 5;
 var b = 50;
 
-if (a === 50 || b === 50 || (a+b) === 50) {
+if (a === 50 || b === 50 || (a + b) === 50) {
   console.log('true');
-}
-else {
+} else {
   console.log('-');
-}
+};
+
+// with function
+
+const is50 = (num1, num2) => (num1 === 50 || num2 === 50 || (num1 + num2) === 50) ? console.log('true') : console.log('-');
+
+is50(0, 45);

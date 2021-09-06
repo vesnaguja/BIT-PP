@@ -5,9 +5,14 @@
 
 var a = 32;
 
-if (a<=13) {
-  console.log(13-a);
-}
-else if (a>13) {
-  console.log((a-13)*2);
-}
+if (a <= 13) {
+  console.log(13 - a);
+} else if (a > 13) {
+  console.log((a - 13) * 2);
+};
+
+
+// with function
+const differenceTo13 = num => (num <= 13) ? (13 - num) : ((num - 13) * 2);
+
+console.log(differenceTo13(15));

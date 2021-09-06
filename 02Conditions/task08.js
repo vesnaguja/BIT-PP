@@ -6,8 +6,12 @@ var a = 8;
 var b = 8;
 
 if (a !== b) {
-  console.log(a+b);
-}
-else {
-  console.log((a+b)*3)
-}
+  console.log(a + b);
+} else {
+  console.log((a + b) * 3)
+};
+
+// with function
+const sumOfInt = (num1, num2) => (num1 !== num2) ? console.log(num1 + num2) : console.log((num1 + num2) * 3);
+
+sumOfInt(12, 8);

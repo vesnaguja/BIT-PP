@@ -25,27 +25,40 @@ else if (c>a && c>b && b>a) {
   console.log(c, b, a)
 }*/
 
-if (a>=b && a>=c) {
-  if (b>c) {
-      console.log(a + ", " + b + ", " +c);
+if (a >= b && a >= c) {
+  if (b > c) {
+    console.log(a + ", " + b + ", " + c);
+  } else {
+    console.log(a + ", " + c + ", " + b);
   }
-  else {
-      console.log(a + ", " + c + ", " +b);
+} else if (b > c && b > c) {
+  if (a > c) {
+    console.log(b + ", " + a + ", " + c);
+  } else {
+    console.log(b + ", " + c + ", " + a);
+  }
+} else if (c > a && c > b) {
+  if (a > b) {
+    console.log(c + ", " + a + ", " + b);
+  } else {
+    console.log(c + ", " + b + ", " + a);
   }
 }
-else if (b>c && b>c) {
-  if (a>c) {
-        console.log(b + ", " + a + ", " +c);
-  }
-  else {
-        console.log(b + ", " + c + ", " +a);
-  }
+
+// using built-in sort method
+const sortNumbers = (num1, num2, num3) => {
+  const numbers = [num1, num2, num3];
+  numbers.sort((a, b) => b - a);
+  let number = numbers.join(',');
+   return number;
 }
-else if (c>a && c>b) {
-  if (a>b) {
-      console.log(c + ", " + a + ", " +b);
-  }
-  else {
-      console.log(c + ", " + b + ", " +a);
-  }
-}        
+
+console.log(sortNumbers(0, -1, 4));
+
+// 
+// const sortNumbers = (num1, num2, num3) => {
+//   const numbers = [num1, num2, num3];
+//   return numbers.sort((a, b) => b - a);
+// }
+
+// console.log(sortNumbers(0, -1, 4));

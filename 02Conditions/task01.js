@@ -8,24 +8,23 @@ var c = 2;
 var proizvod = a * b * c;
 var message = '';
 
-if (proizvod <0) {
+if (proizvod < 0) {
   message = '-';
-}
-else {
+} else {
   message = '+';
 }
 console.log('The sign is ' + message);
 
 //ili
 var znak = '+';
-if(proizvod < 0) {
+if (proizvod < 0) {
   znak = '-';
 }
 console.log(znak);
 
 
 // kraće
-(a*b*c <0) ? console.log('-') : console.log('+');
+(a * b * c < 0) ? console.log('-'): console.log('+');
 
 // još kraće
-console.log((a*b*c <0) ? '-' : '+');
+console.log((a * b * c < 0) ? '-' : '+');

@@ -3,11 +3,18 @@ Sample input: 10  					Sample input: 7
 Output: 10 / 2 = 5					Output: X  
 */
 
-var a = 10
-var result = a/2;
-if (typeof a == 'number' && a%2 == 0) {
+var a = 10;
+var result = a / 2;
+if (typeof a == 'number' && a % 2 === 0) {
   console.log(result);
-}
-else {
+} else {
   console.log('X');
 }
+
+// with function
+
+const dividedBy2 = num => {
+  return ((typeof num == 'number' && num % 2 === 0) ? console.log(num / 2) : console.log('X'))
+}
+
+dividedBy2(10);
